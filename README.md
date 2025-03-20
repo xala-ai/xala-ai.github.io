@@ -1,91 +1,123 @@
-# Xalamander - AI-Driven Data Visualization & Information Distillation
+<br />
+<div align="center">
+<a href="https://github.com/importantimport/urara">
+<img src="https://github.com/importantimport/urara/raw/main/urara/hello-world/urara.webp" alt="urara" /></a>
+</div>
+<br />
 
-Xalamander is a powerful web application that uses AI to transform complex documents into beautifully crafted executive summaries with insightful data visualizations.
+<p align="center">
+<a href="https://fff.js.org"><img src="https://img.shields.io/badge/%F0%9F%8C%9F%20F%20F%20F-0.5-yellow?style=flat" alt="fff" /></a>
+<img src="https://img.shields.io/github/languages/top/importantimport/urara?color=%23ff3e00" alt="Language" />
+<a href="https://github.com/importantimport/urara/blob/main/COPYING"><img src="https://img.shields.io/github/license/importantimport/urara?color=%23fff" alt="License" /></a>
+<img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fimportantimport%2Furara.svg?type=shield" alt="FOSSA Status" />
+</p>
+<p align="center">
+<a href="https://urara-demo.netlify.app">🚀 Demo</a>
+/
+<a href="https://urara-docs.netlify.app">📝 Documentation</a>
+/
+<a href="https://github.com/importantimport/urara/discussions">💬 Discussions</a>
+</p>
+<p align="center">
+<span>English</span>
+|
+<a href="https://github.com/importantimport/urara/blob/main/README.zh.md">正體中文</a>
+</p>
 
-## Features
+## 🎉 Try it now!
 
-- **PDF Document Processing**: Upload any PDF document to extract and analyze its content
-- **AI-Driven Analysis**: Automatically extracts key information, identifies data points, and distills core insights
-- **Beautiful Visualizations**: Presents data using interactive charts and graphs powered by D3.js
-- **Executive Summaries**: Creates concise summaries that highlight the most important information
-- **Responsive Design**: Works seamlessly across desktop and mobile devices
+### Local
 
-## Technology Stack
-
-- **Frontend**: Svelte with TypeScript
-- **Styling**: TailwindCSS for responsive design
-- **Visualizations**: D3.js for interactive data visualizations
-- **PDF Processing**: pdf-parse for extracting text from PDFs
-- **Build Tool**: Vite for fast development and optimized production builds
-- **Deployment**: GitHub repositories served through Netlify
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v16 or later)
-- pnpm package manager
-
-### Installation
-
-1. Clone the repository
-   ```bash
-   git clone https://github.com/yourusername/xalamander.git
-   cd xalamander
-   ```
-
-2. Install dependencies
-   ```bash
-   pnpm install
-   ```
-
-3. Start the development server
-   ```bash
-   pnpm dev
-   ```
-
-4. Build for production
-   ```bash
-   pnpm build
-   ```
-
-## Usage
-
-1. Navigate to the application in your browser
-2. Upload a PDF document using the file uploader
-3. Wait for the AI to process and analyze the document
-4. Explore the generated summary, key metrics, and visualizations
-5. Export or share the results as needed
-
-## Project Structure
-
-```
-xalamander/
-├── src/
-│   ├── components/         # UI components
-│   │   ├── visualizations/ # D3.js visualization components
-│   ├── types/              # TypeScript type definitions
-│   ├── assets/             # Static assets
-│   ├── App.svelte          # Main application component
-│   └── main.ts             # Application entry point
-├── public/                 # Public static files
-└── index.html              # HTML entry point
+```bash
+npx degit importantimport/urara my-blog && cd my-blog # create a new project in my-blog
+pnpm i # if u don't have pnpm installed, run: npm i -g pnpm
 ```
 
-## Development Roadmap
+### Remote
 
-- Enhance PDF text extraction with more advanced algorithms
-- Add support for additional document formats (Word, Excel, etc.)
-- Implement user accounts and saved analyses
-- Add collaborative features for team-based document analysis
-- Expand visualization options with more chart types and customization
+[![Open in StackBlitz](https://img.shields.io/badge/-Open%20in%20StackBlitz-1374ef?style=for-the-badge&logo=Amp)](https://stackblitz.com/github/importantimport/urara) [![Use this template](https://img.shields.io/badge/-Use%20this%20Template-181717?style=for-the-badge&logo=GitHub)](https://github.com/importantimport/urara/generate) [![Deploy with Vercel](https://img.shields.io/badge/-Deploy%20with%20Vercel-1374ef?style=for-the-badge&logo=Vercel)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fimportantimport%2Furara&env=URARA_SITE_URL&envDescription=Site%20URL.&envLink=https%3A%2F%2Fexample.com&project-name=urara-blog&repository-name=urara-blog) [![Deploy to Netlify](https://img.shields.io/badge/-Deploy%20to%20Netlify-15847d?style=for-the-badge&logo=Netlify&logoColor=white)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fimportantimport%2Furara#URARA_SITE_URL=https://example.com&CUSTOM_LOGO=https://github.com/importantimport/urara/raw/main/urara/assets/any@512.png)
 
-## License
+## ⚡️ Usage
 
-MIT
+### Developing
 
-## Acknowledgments
+Start a development server:
 
-- D3.js for the amazing visualization library
-- Svelte team for the reactive UI framework
-- TailwindCSS for the utility-first CSS framework
+```bash
+pnpm dev
+```
+
+### Building
+
+Create a production version of ur blog:
+
+```bash
+pnpm build
+```
+
+u can preview the built app with `pnpm preview`.
+
+### Documentation
+
+For full documentation, visit [urara-docs.netlify.app](https://urara-docs.netlify.app).
+
+### Give this project a star
+
+tyvm! ur ⭐ will give me more motivation to improve this project.
+
+## ✨ Features
+
+- Out of the box **Atom feed** (WebSub), **Sitemap**, **PWA** (Web app manifest & ServiceWorker) support.
+- Present beautiful interface designs and animations with daisyUI, of course.
+- Good [IndieWeb](https://indieweb.org/) Compatibility - Multi-kind posts with [microformats2](https://microformats.org/) markup content, Showcasing [Webmentions](https://indieweb.org/Webmention) via [webmentions.io](https://webmentions.io) API.
+- Don't worry about the article and image directories - just put them under a folder and they'll be [copied automatically at build time](https://github.com/importantimport/urara/blob/main/urara.ts).
+- [Comment Components](https://github.com/importantimport/urara/tree/main/src/lib/components/comments): Webmentions, Giscus, Utterances... u can use more than one.
+
+## 📦️ Pre-packed
+
+### TailwindCSS & PostCSS Plugins
+
+- [daisyUI](https://github.com/saadeghi/daisyui) - The most popular, free and open-source Tailwind CSS component library.
+- [Tailwind CSS Typography](https://github.com/tailwindlabs/tailwindcss-typography) - Beautiful typographic defaults for HTML you don't control.
+- [Autoprefixer](https://github.com/postcss/autoprefixer) - Parse CSS and add vendor prefixes to rules by Can I Use.
+- [CSSNANO](https://github.com/cssnano/cssnano) - A modular minifier, built on top of the PostCSS ecosystem.
+
+### Markdown preprocessor & Syntax highlighter
+
+- [MDsveX](https://github.com/pngwn/MDsveX) - A markdown preprocessor for Svelte.
+- [Shiki Twoslash](https://github.com/shikijs/twoslash) - A beautiful Syntax Highlighter.
+
+### Vite Plugins
+
+- [UnoCSS](https://github.com/unocss/unocss) - The instant on-demand atomic CSS engine.
+- [VitePWA](https://github.com/antfu/vite-plugin-pwa) - Zero-config PWA for Vite.
+
+## 🚀 Sites
+
+- [./kwaa.dev](https://kwaa.dev) - [kwaa/blog](https://github.com/kwaa/blog)
+- [Seviche.cc](https://seviche.cc) - [Sevichecc/Urara-Blog](https://github.com/Sevichecc/Urara-Blog)
+- [Antonio Sarcevic](https://www.sarcevic.dev) - [SarcevicAntonio/SarcevicAntonio](https://github.com/SarcevicAntonio/SarcevicAntonio)
+
+and more...
+
+- [urara-blog - Discussions](https://github.com/importantimport/urara/discussions/2)
+- [urara-blog - Topics](https://github.com/topics/urara-blog)
+
+are u using Urara? add the `urara-blog` topic on ur repo!
+
+## 👥 Contributing
+
+If u're interested in contributing to Urara, pls read [contributing docs](.github/CONTRIBUTING.md) before submitting a pull request.
+
+## 📝 License
+
+This work is free, it comes without any warranty. You can redistribute it and/or modify it under the
+terms of the Do What The Fuck You Want To Public License, Version 2,
+as published by Sam Hocevar. See the [COPYING](https://github.com/importantimport/urara/blob/main/COPYING) file for more details.
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fimportantimport%2Furara.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fimportantimport%2Furara?ref=badge_large)
+
+special thanks / inspired from:
+
+- [@michaeloliverx - Generate Posts List](https://github.com/pngwn/MDsveX/issues/294#issuecomment-907029639)
+- icon made by [Kpouri](https://github.com/kpouri)

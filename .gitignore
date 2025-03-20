@@ -1,24 +1,25 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# build output
+build
+static
+.svelte-kit
+.netlify
+.vercel
 
+# dependencies
 node_modules
-dist
-dist-ssr
+
+# env
 *.local
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# logs
+pnpm-debug.log*
+
+# macOS-specific files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+
+# temp file
+src/routes/**/+page.svelte.md
+src/routes/**/+page.md
+src/static
+*.config.js
+urara.js
