@@ -17,7 +17,14 @@ export default defineConfig({
   build: {
     sourcemap: false,
     rollupOptions: {
-      cache: false
+      cache: false,
+      external: [
+        'pdfjs-dist',
+        'pdfjs-dist/legacy/build/pdf.js',
+        'pdfjs-dist/build/pdf.worker.min.js',
+        'canvas',
+        'pdf.js-extract'
+      ]
     }
   },
   css: {

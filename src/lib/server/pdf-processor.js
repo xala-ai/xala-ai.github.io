@@ -1,10 +1,27 @@
 import { PDFExtract } from 'pdf.js-extract';
 import { createCanvas } from 'canvas';
-import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.js';
+// Replace static import with dynamic import
+// import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.js';
 import { extractTables } from './table-extractor.js';
 
-// Configure the worker
-pdfjsLib.GlobalWorkerOptions.workerSrc = './pdf.worker.mjs';
+// Will be loaded dynamically
+let pdfjsLib = null;
+
+// Load PDF.js dynamically
+async function loadPdfJs() {
+    if (!pdfjsLib) {
+        try {
+            // Dynamic import
+            pdfjsLib = await import('pdfjs-dist/legacy/build/pdf.js');
+            // Configure the worker
+            pdfjsLib.GlobalWorkerOptions.workerSrc = './pdf.worker.mjs';
+        } catch (error) {
+            console.error('Error loading PDF.js:', error);
+            throw new Error(`Failed to load PDF.js: ${error.message}`);
+        }
+    }
+    return pdfjsLib;
+}
 
 /**
  * Comprehensive PDF processor that extracts text, images, tables, and metadata
@@ -62,8 +79,13 @@ export async function processPDF(buffer) {
         }
 
         // Extract images
-        const images = await extractImagesFromPDF(buffer);
-        processedData.images = images;
+        try {
+            const images = await extractImagesFromPDF(buffer);
+            processedData.images = images;
+        } catch (error) {
+            console.warn('Error extracting images:', error);
+            processedData.images = [];
+        }
 
         // Extract structure (headings, sections)
         processedData.structure = extractDocumentStructure(data.pages);
@@ -85,6 +107,9 @@ async function extractImagesFromPDF(buffer) {
     const images = [];
 
     try {
+        // Load PDF.js dynamically
+        const pdfjsLib = await loadPdfJs();
+
         // Load PDF document
         const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
 
@@ -122,6 +147,9 @@ async function extractImagesFromPDF(buffer) {
  */
 async function extractImageData(page, imgIndex) {
     try {
+        // Ensure PDF.js is loaded
+        const pdfjsLib = await loadPdfJs();
+
         const viewport = page.getViewport({ scale: 1.0 });
         const canvas = createCanvas(viewport.width, viewport.height);
         const ctx = canvas.getContext('2d');

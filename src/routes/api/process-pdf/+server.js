@@ -1,5 +1,5 @@
 import { json } from '@sveltejs/kit';
-import { processPDF } from '$lib/server/pdf-processor.js';
+import { processPDF } from '$lib/server/pdf-processing-adapter.js';
 import { generateSummary } from '$lib/server/claude-api.js';
 
 /**

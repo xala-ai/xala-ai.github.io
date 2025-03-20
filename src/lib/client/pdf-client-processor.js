@@ -7,9 +7,16 @@ import { browser } from '$app/environment';
 // Only import PDF.js dynamically in browser environment
 async function getPdfJs() {
     if (browser) {
-        const pdfjs = await import('pdfjs-dist');
-        pdfjs.GlobalWorkerOptions.workerSrc = '/pdfjs-dist/build/pdf.worker.min.js';
-        return pdfjs;
+        try {
+            const pdfjs = await import('pdfjs-dist');
+            // Make worker source consistent
+            // Use the external bundled worker
+            pdfjs.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js';
+            return pdfjs;
+        } catch (error) {
+            console.error('Error loading PDF.js:', error);
+            throw new Error('Failed to load PDF.js in browser');
+        }
     }
     throw new Error('PDF processing requires browser environment');
 }
