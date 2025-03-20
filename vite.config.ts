@@ -27,10 +27,10 @@ export default defineConfig({
         autoprefixer(),
         ...(process.env.NODE_ENV === 'production'
           ? [
-              cssnano({
-                preset: ['default', { discardComments: { removeAll: true } }]
-              })
-            ]
+            cssnano({
+              preset: ['default', { discardComments: { removeAll: true } }]
+            })
+          ]
           : [])
       ]
     }
@@ -50,11 +50,40 @@ export default defineConfig({
     SvelteKit(),
     SvelteKitPWA({
       registerType: 'autoUpdate',
-      manifest: false,
-      scope: '/',
       workbox: {
-        globPatterns: ['posts.json', '**/*.{js,css,html,svg,ico,png,webp,avif}'],
-        globIgnores: ['**/sw*', '**/workbox-*']
+        globDirectory: 'build',
+        globPatterns: ['**/*.{js,css,html,svg,ico,png,webp,avif}'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365
+              }
+            }
+          },
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'images-cache',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24 * 30
+              }
+            }
+          },
+          {
+            urlPattern: /\.(?:js|css)$/,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'static-resources'
+            }
+          }
+        ]
       }
     })
   ]
