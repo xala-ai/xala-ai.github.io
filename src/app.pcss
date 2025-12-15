@@ -1,0 +1,464 @@
+/* tailwind */
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+/* global */
+
+html {
+  @apply !bg-base-200 scroll-smooth	overflow-x-hidden overflow-y-scroll;
+}
+
+::selection {
+  @apply bg-primary/20;
+}
+
+/* .urara-prose */
+
+.urara-prose {
+  @apply !max-w-none;
+}
+
+/* .urara-prose heading */
+
+.urara-prose > :is(h1, h2, h3, h4, h5) > a {
+  @apply no-underline font-bold;
+}
+
+.urara-prose > :is(h1, h2, h3, h4, h5) > a::after {
+  @apply pl-2 text-base-200 transition-all content-['#'];
+}
+
+.urara-prose > :is(h1, h2, h3, h4, h5):hover > a::after {
+  @apply text-primary;
+}
+
+/* .urara-prose list */
+
+.urara-prose > ul > li > input {
+  @apply my-auto;
+}
+
+/* .urara-prose table */
+
+.urara-prose div > table > thead {
+  @apply border-0;
+}
+
+.urara-prose div > table > thead > tr > th {
+  @apply !relative;
+}
+
+/* .urara-prose a */
+
+.urara-prose :is(p, li) > a {
+  @apply bg-[length:100%_0.2em] hover:bg-[length:100%_100%] bg-[position:0_88%] bg-gradient-to-t from-secondary/50 to-secondary/40 bg-no-repeat transition-all ease-in-out !no-underline;
+}
+
+/* .urara-prose misc */
+
+.urara-prose > p img {
+  @apply w-full;
+}
+
+.urara-prose :is(p, li) > code {
+  @apply bg-base-200 px-2;
+}
+
+.urara-prose li > input {
+  @apply checkbox checkbox-xs;
+}
+
+.urara-prose kbd {
+  @apply kbd;
+}
+
+.urara-prose hr {
+  @apply border-none divider;
+}
+
+/* footer a */
+
+footer a {
+  @apply !no-underline hover:text-primary hover:!underline transition-all;
+}
+
+.spoiler {
+  @apply blur-sm hover:blur-none active:blur-none transition-all select-all;
+}
+
+/* .prose pre */
+
+.prose pre {
+  @apply mockup-code !bg-neutral min-w-0;
+}
+
+.prose pre:not(.shiki) {
+  @apply bg-neutral text-neutral-content;
+}
+
+.prose pre:not(.shiki)::before {
+  @apply sticky -left-5 -ml-5;
+}
+
+/* .urara-prose pre */
+
+@media (max-width: 768px) {
+  .urara-prose > pre {
+    @apply -mx-8 rounded-none;
+  }
+}
+
+.urara-prose > pre {
+  @apply pb-0;
+}
+
+.urara-prose > pre > div.code-container {
+  @apply pb-5 overflow-x-auto;
+}
+
+/* shiki */
+
+pre.shiki {
+  @apply px-0;
+}
+
+pre.shiki::before {
+  @apply sticky;
+}
+
+pre.shiki > div.code-title {
+  @apply absolute -mt-10 ml-20 pt-1.5 pl-1.5 opacity-50;
+}
+
+pre.shiki .language-id {
+  @apply hidden;
+}
+
+pre.shiki > .code-container {
+  @apply overflow-auto;
+}
+
+:is(pre.shiki[text='true'], pre.shiki[svelte='true']) > div.code-container {
+  @apply mx-5;
+}
+
+pre.shiki:not([text='true'], [svelte='true']) > .code-container > code > div.line > span:first-child {
+  @apply pl-5;
+}
+
+pre.shiki:not([text='true'], [svelte='true']) > .code-container > code > div.line > span:last-child {
+  @apply pr-5;
+}
+
+pre.shiki div.dim {
+  @apply opacity-50 transition-opacity;
+}
+
+pre.shiki:hover div.dim {
+  @apply opacity-100;
+}
+
+pre.shiki div.highlight::before {
+  @apply bg-warning/20 absolute content-[''] w-full h-6;
+}
+
+pre.twoslash data-lsp {
+  @apply border-b border-dashed border-transparent transition-all;
+}
+
+pre.twoslash:hover data-lsp {
+  @apply border-neutral-content/30;
+}
+
+pre.twoslash data-lsp:hover::before {
+  @apply content-[attr(lsp)] absolute rounded translate-y-5 bg-neutral-focus text-neutral-content font-mono whitespace-pre-wrap transition-all px-2 py-1 z-50;
+}
+
+/* Xalamander Vice Theme - Miami Vice Inspired */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes neon-pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+[data-theme="xalamander-vice"] {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  
+  /* Colors */
+  --p: 326 100% 60%; /* Miami Pink */
+  --pc: 0 0% 100%;
+  --s: 187 100% 69%; /* Miami Blue */
+  --sc: 0 0% 100%;
+  --a: 265 80% 60%; /* Purple */
+  --ac: 0 0% 100%;
+  --n: 244 30% 14%; /* Dark Navy */
+  --nc: 210 40% 96%;
+  --b1: 240 23% 11%; /* Dark Background */
+  --b2: 240 24% 13%;
+  --b3: 240 24% 15%;
+  --bc: 210 40% 96%;
+  
+  /* Effects */
+  --animation-btn: 0.25s;
+  --animation-input: 0.2s;
+  --btn-focus-scale: 0.98;
+  --border-btn: 1px;
+  --tab-border: 2px;
+  --tab-radius: 0.75rem;
+  --rounded-btn: 0.5rem;
+  
+  /* Custom Properties */
+  --xala-gradient: linear-gradient(45deg, hsl(var(--p)) 0%, hsl(var(--s)) 100%);
+  --xala-gradient-animated: linear-gradient(45deg, hsl(var(--p)) 0%, hsl(var(--s)) 50%, hsl(var(--a)) 100%);
+  --xala-border: 2px solid transparent;
+  --xala-border-radius: 0.75rem;
+  --xala-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3);
+  
+  /* Custom Component Styles */
+  & .btn-gradient {
+    background: var(--xala-gradient);
+    border: none;
+    color: hsl(var(--pc));
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px hsla(var(--p), 0.4);
+  }
+  
+  & .btn-gradient:hover {
+    box-shadow: 0 0 20px hsla(var(--p), 0.7);
+    transform: translateY(-2px);
+  }
+  
+  & .card-gradient {
+    background: linear-gradient(135deg, hsla(var(--n), 0.7) 0%, hsla(var(--b1), 0.9) 100%);
+    border-left: 4px solid hsl(var(--p));
+    backdrop-filter: blur(10px);
+    box-shadow: var(--xala-shadow);
+  }
+  
+  & .gradient-text {
+    background: var(--xala-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  & .gradient-border {
+    border: 2px solid transparent;
+    background: linear-gradient(to right, hsl(var(--b1)), hsl(var(--b1))),
+                var(--xala-gradient);
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+  }
+  
+  & .gradient-animated {
+    background: var(--xala-gradient-animated);
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+  
+  & .neon-text {
+    text-shadow: 0 0 5px hsla(var(--s), 0.8),
+                 0 0 10px hsla(var(--s), 0.4);
+    animation: neon-pulse 2s ease-in-out infinite;
+  }
+  
+  & .float-element {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  & .slide-up {
+    animation: slide-up 0.3s ease-out forwards;
+  }
+}
+
+/* Xalamander Light Theme - Bright Miami Vibe */
+[data-theme="xalamander-light"] {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  
+  /* Colors */
+  --p: 326 85% 66%; /* Softer Pink */
+  --pc: 0 0% 100%;
+  --s: 187 85% 55%; /* Softer Blue */
+  --sc: 0 0% 100%;
+  --a: 265 80% 65%; /* Softer Purple */
+  --ac: 0 0% 100%;
+  --n: 244 30% 30%; /* Lighter Navy */
+  --nc: 210 40% 98%;
+  --b1: 210 40% 98%; /* Light Background */
+  --b2: 210 30% 95%;
+  --b3: 210 25% 90%;
+  --bc: 244 30% 20%;
+  
+  /* Effects */
+  --animation-btn: 0.25s;
+  --animation-input: 0.2s;
+  --btn-focus-scale: 0.98;
+  --border-btn: 1px;
+  --tab-border: 2px;
+  --tab-radius: 0.75rem;
+  --rounded-btn: 0.5rem;
+  
+  /* Custom Properties */
+  --xala-gradient: linear-gradient(45deg, hsl(var(--p)) 0%, hsl(var(--s)) 100%);
+  --xala-gradient-animated: linear-gradient(45deg, hsl(var(--p)) 0%, hsl(var(--s)) 50%, hsl(var(--a)) 100%);
+  --xala-border: 2px solid transparent;
+  --xala-border-radius: 0.75rem;
+  --xala-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  
+  /* Component Styles (Same as Vice but with light background adjustments) */
+  & .btn-gradient {
+    background: var(--xala-gradient);
+    border: none;
+    color: hsl(var(--pc));
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px hsla(var(--p), 0.4);
+  }
+  
+  & .btn-gradient:hover {
+    box-shadow: 0 0 20px hsla(var(--p), 0.7);
+    transform: translateY(-2px);
+  }
+  
+  & .card-gradient {
+    background: linear-gradient(135deg, hsla(var(--b2), 0.9) 0%, hsla(var(--b1), 0.9) 100%);
+    border-left: 4px solid hsl(var(--p));
+    box-shadow: var(--xala-shadow);
+  }
+  
+  & .gradient-text {
+    background: var(--xala-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  & .gradient-border {
+    border: 2px solid transparent;
+    background: linear-gradient(to right, hsl(var(--b1)), hsl(var(--b1))),
+                var(--xala-gradient);
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+  }
+  
+  & .gradient-animated {
+    background: var(--xala-gradient-animated);
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+  
+  & .neon-text {
+    text-shadow: 0 0 5px hsla(var(--s), 0.8),
+                 0 0 10px hsla(var(--s), 0.4);
+    animation: neon-pulse 2s ease-in-out infinite;
+  }
+  
+  & .float-element {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+/* Xalamander Executive Theme - Burberry-inspired Luxury */
+[data-theme="xalamander-exec"] {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  
+  /* Colors */
+  --p: 31 68% 50%; /* Gold */
+  --pc: 0 0% 100%;
+  --s: 346 52% 37%; /* Crimson */
+  --sc: 0 0% 100%;
+  --a: 32 42% 32%; /* Brown */
+  --ac: 0 0% 100%;
+  --n: 34 30% 25%; /* Dark Brown */
+  --nc: 35 30% 94%;
+  --b1: 35 30% 96%; /* Light Cream Background */
+  --b2: 35 25% 92%;
+  --b3: 35 20% 88%;
+  --bc: 34 30% 20%;
+  
+  /* Effects */
+  --animation-btn: 0.25s;
+  --animation-input: 0.2s;
+  --btn-focus-scale: 0.98;
+  --border-btn: 1px;
+  --tab-border: 2px;
+  --tab-radius: 0.5rem;
+  --rounded-btn: 0.25rem;
+  
+  /* Custom Properties */
+  --xala-gradient: linear-gradient(45deg, hsl(var(--p)) 0%, hsl(var(--s)) 100%);
+  --xala-gradient-animated: linear-gradient(45deg, hsl(var(--p)) 0%, hsl(var(--a)) 50%, hsl(var(--s)) 100%);
+  --xala-border: 2px solid hsl(var(--p));
+  --xala-border-radius: 0.5rem;
+  --xala-shadow: 0 5px 15px -3px rgb(0 0 0 / 0.1);
+  
+  /* Component Styles */
+  & .btn-gradient {
+    background: var(--xala-gradient);
+    border: none;
+    color: hsl(var(--pc));
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px hsla(var(--p), 0.3);
+  }
+  
+  & .btn-gradient:hover {
+    box-shadow: 0 0 15px hsla(var(--p), 0.5);
+    transform: translateY(-1px);
+  }
+  
+  & .card-gradient {
+    background: linear-gradient(135deg, hsla(var(--b2), 0.9) 0%, hsla(var(--b1), 0.9) 100%);
+    border-left: 4px solid hsl(var(--s));
+    box-shadow: var(--xala-shadow);
+  }
+  
+  & .gradient-text {
+    background: var(--xala-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  & .gradient-border {
+    border: 2px solid transparent;
+    background: linear-gradient(to right, hsl(var(--b1)), hsl(var(--b1))),
+                var(--xala-gradient);
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+  }
+  
+  & .checkered-pattern {
+    background-image: 
+      linear-gradient(45deg, hsl(var(--a)/0.1) 25%, transparent 25%), 
+      linear-gradient(-45deg, hsl(var(--a)/0.1) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, hsl(var(--a)/0.1) 75%),
+      linear-gradient(-45deg, transparent 75%, hsl(var(--a)/0.1) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+}
+
+/* Append to the existing file with our new themes */
