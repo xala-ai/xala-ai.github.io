@@ -72,6 +72,16 @@
         animation: fadeInUp 1s ease-out;
       }
 
+      .content > a {
+        text-decoration: none;
+        /* display: inline-block; */
+        transition: transform 0.3s ease;
+      }
+
+      .content > a:hover {
+        transform: scale(1.05);
+      }
+
       .coming-soon {
         color: #ffffff;
         font-size: 1.75rem;
@@ -83,6 +93,45 @@
         animation: fadeIn 1.5s ease-out 0.3s both;
         font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto",
           sans-serif;
+      }
+
+      .yellobricks-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1.5rem;
+        margin-top: 5rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        color: #ffffff;
+        font-size: 1.5rem;
+        font-weight: 400;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        animation: fadeIn 1.5s ease-out 0.6s both;
+        backdrop-filter: blur(10px);
+        font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto",
+          sans-serif;
+      }
+
+      .yellobricks-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .yellobricks-button:active {
+        transform: translateY(0);
+      }
+
+      .yellobricks-button img {
+        height: 40px;
+        width: auto;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
       }
 
       @keyframes fadeInUp {
@@ -120,8 +169,18 @@
     <div class="background"></div>
     <div class="overlay"></div>
     <div class="content">
-      <img src="logo.png" alt="XALA AI Logo" class="logo" />
+      <a href="https://xala.ai">
+        <img src="logo.png" alt="XALA AI Logo" class="logo" />
+      </a>
       <div class="coming-soon">Coming Soon</div>
+      <a
+        href="https://yellobricks.xala.ai"
+        class="yellobricks-button"
+        target="_blank"
+      >
+        <img src="yellobrick.png" alt="YelloBricks Logo" />
+        YelloBricks
+      </a>
     </div>
   </body>
 </html>
